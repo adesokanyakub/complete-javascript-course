@@ -175,9 +175,9 @@ lines`);
 ////////////////////////////////////
 // Taking Decisions: if / else Statements
 const age = 15;
-
-if (age >= 18) {
-  console.log('Sarah can start driving license 🚗');
+const isOldEnough = age >= 18
+if (isOldEnough) {
+  console.log('Sarah can start driving license  🚗'); //use Windows + "." for emoji list
 } else {
   const yearsLeft = 18 - age;
   console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
@@ -238,7 +238,8 @@ console.log(Number(inputYear), inputYear);
 console.log(Number(inputYear) + 18);
 
 console.log(Number('Jonas'));
-console.log(typeof NaN);
+console.log(typeof NaN); // outputs "number". This is because NaN is an inValid number and a type of Number
+
 
 console.log(String(23), 23);
 
@@ -255,11 +256,11 @@ console.log(n);
 // Truthy and Falsy Values
 
 // 5 falsy values: 0, '', undefined, null, NaN
-console.log(Boolean(0));
-console.log(Boolean(undefined));
-console.log(Boolean('Jonas'));
-console.log(Boolean({}));
-console.log(Boolean(''));
+console.log(Boolean(0)); // False
+console.log(Boolean(undefined)); // False
+console.log(Boolean('Jonas')); // True
+console.log(Boolean({})); // True
+console.log(Boolean('')); // False
 
 const money = 100;
 if (money) {
@@ -282,7 +283,7 @@ if (age === 18) console.log('You just became an adult :D (strict)');
 
 if (age == 18) console.log('You just became an adult :D (loose)');
 
-const favourite = Number(prompt("What's your favourite number?"));
+const favourite = Number(prompt("What's your favourite number?")); // Prompt is used to ask user for input
 console.log(favourite);
 console.log(typeof favourite);
 
@@ -354,6 +355,15 @@ GOOD LUCK 😀
 // } else if (scoreDolphins === scoreKoalas) {
 //   console.log('Both win the trophy!');
 // }
+//another option below
+// const dolphinWins = scoreDolphins > scoreKoalas;
+// const draw = scoreDolphins === scoreKoalas;
+// if (dolphinWins) {
+//     console.log(`Dolphins win the trophy`);
+// } else if (draw){
+//     console.log(`Both win the trophy`);
+// } else{
+//     console.log(`Koalas win the trophy`);
 
 // BONUS 1
 const scoreDolphins = (97 + 112 + 80) / 3;
@@ -413,7 +423,7 @@ if (day === 'monday') {
 }
 
 ////////////////////////////////////
-// Statements and Expressions
+// Statements and Expressions. Expression produces a value but statements don't
 3 + 4
 1991
 true && false && !false

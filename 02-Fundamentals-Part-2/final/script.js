@@ -1,8 +1,12 @@
 'use strict';
 
-/*
+/*     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      github token
 ///////////////////////////////////////
 // Activating Strict Mode
+//use CTRL SHIFT J to open dev tools in chrome
+/7 Primitive data types in JS; Number, String,, Boolean, Undefined, Null, Symbol, BigInt
+//typeof null outputs object. this is a bug in JS
+
 let hasDriversLicense = false;
 const passTest = true;
 
