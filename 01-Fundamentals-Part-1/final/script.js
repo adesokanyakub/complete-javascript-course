@@ -476,3 +476,33 @@ const bill = 430;
 const tip = bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
 console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`);
 */
+
+
+
+
+const mark = {
+  fullName: 'Mark Miller',
+  mass: 78,
+  height: 1.89,
+  calcBMI: function(){
+    return  this.mass / (this.height **2);
+    
+  },
+};
+mark.bmi = mark.calcBMI();
+
+const john = {
+  fullName: 'John Smith',
+  mass: 92,
+  height: 1.95,
+  calcBMI: function(){
+   return  this.mass / (this.height **2);  
+  },
+};
+
+john.bmi = john.calcBMI();
+
+const compBMI = (mark.bmi > john.bmi) ? `${mark.fullName}'s BMI (${john.bmi}) is higher than ${john.fullName}'s (${john.bmi})` : `${john.fullName}'s BMI (${john.bmi}) is higher thank ${mark.fullName}'s (${mark.bmi})`;
+console.log(john);
+console.log(mark);
+console.log(compBMI);

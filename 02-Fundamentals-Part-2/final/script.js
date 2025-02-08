@@ -16,7 +16,6 @@ if (hasDriversLicense) console.log('I can drive :D');
 // const interface = 'Audio';
 // const private = 534;
 
-
 ///////////////////////////////////////
 // Functions
 function logger() {
@@ -590,4 +589,339 @@ const calcAverage = function (arr) {
 console.log(calcAverage([2, 3, 7]));
 console.log(calcAverage(totals));
 console.log(calcAverage(tips));
+
+
+// The Introduction to objects
+
+const dayoArray = [
+  'Dayo',
+  'Adesokan',
+  3002 - 1988,
+  'Developer',
+  ['Malik', 'Abass', 'Tobi']
+];
+
+const dayoObj = { //this notation is called object literal syntax
+  firstName: 'Dayo',
+  lastName: 'Adesokan',
+  age: 3002 - 1988,
+  job: 'Developer',
+  friends: ['Malik', 'Abass', 'Tobi']
+};
+console.log(dayoObj);
+
+// dot and bracket notation
+console.log(dayoObj.lastName);
+console.log(dayoObj['lastName']); // bracket notation accepts expression. i,e something that produces a value
+const nameKey = 'Name'; // example of bracket notation accepting expression
+console.log(dayoObj['first' + nameKey]);
+console.log(dayoObj['last' + nameKey]);
+
+//use bracket notation when you need to first compute the property name
+const interestedIn = prompt('What do you want to know about dayo? Choose between firstName, lastName, age, job, and friends?');
+//alert(interestedIn);
+//alert(dayoObj[interestedIn]);
+
+if (interestedIn === 'friends') {
+  alert(`${dayoObj.firstName} has ${dayoObj.friends.length} friends, and his best friend is called ${dayoObj.friends[0]}`)
+} else if(dayoObj[interestedIn] !== undefined) {
+  alert(`Dayo's ${interestedIn} is ${dayoObj[interestedIn]}` );
+} else {
+ console.log(`Wrong request ! Choose between firstName, lastName, job, age, and, friends `)
+ }
+
+ //use dot notation and bracket notation to add property to object
+
+dayoObj.location = 'Edmonton';
+dayoObj['facebook'] = 'yadesokan';
+console.log(dayoObj);
+
+//Chalenge 
+// "Dayo has 3 frineds, and his best friend is called Malik" I have my solution above
+
+//Object methods
+
+const dayoObj = {
+   //this notation is called object literal syntax
+  firstName: 'Dayo',
+  lastName: 'Adesokan',
+  birthYeah: 1988,
+  job: 'Developer',
+  friends: ['Malik', 'Abass', 'Tobi'],
+  hasDriversLicense: true,
+
+  // calcAge: function(birthYeah){
+  //   return 2037 - birthYeah
+  // } //Any function attached to an oblect like this is called a method.
+  //Also, function declaration cannot be used in an object. It has to be an expression that produces a value.
+  
+  // calcAge: function(){
+  //   // console.log(this);
+  //   return 2037 - this.birthYeah // this reference the object calling the function
+  // } 
+
+  calcAge: function(){
+    // console.log(this);
+    this.age = 2037 - this.birthYeah;
+    return this.age;
+     // this reference the object calling the function
+  } ,
+
+  // challenge solution for getSummary
+
+  // getSummary: function(){// This is my solution
+  
+  //   if (this.hasDriversLicense) {
+  //     return `${this.firstName} is a ${this.calcAge()}-years old ${this.job}, and he has a driver's license`
+      
+  //   } else {
+  //     return `${this.firstName} is a ${this.calcAge()}-years old ${this.job}, and he has no driver's license`
+  //   }
+    
+  // }
+
+  getSummary: function(){// Jonas solution
+  
+   return `${this.firstName} is a ${this.calcAge()}-years old ${this.job}, and he has ${this.hasDriversLicense ? 'a':'no' } driver's license`
+  
+    
+  }
+};
+
+console.log(dayoObj.calcAge());
+console.log(dayoObj.age);
+console.log(dayoObj.getSummary());
+// console.log(dayoObj.calcAge(dayoObj.birthYeah));
+// console.log(dayoObj['calcAge'](1988));// bracket notation
+
+//Write a method that summarize data about Dayo
+// e.g "Dayo is a 47-year old teacher, and he has a driver's license"
+
+/*Coding CHALLENGE #3
+
+Let's go back to Mark and John comparing their BMIs!
+
+This time, let's use objects to implement the calculations! Remember: BMI = mass / (height * height) (mass in kg and height in meters).
+
+Your tasks:
+
+    For each of them, create an object with properties for their full name, mass, and height (Mark Miller and John Smith). Name these objects as mark and john, and their properties exactly as fullName, mass and height.
+
+    Create a calcBMI method on each object to calculate the BMI (the same method on both objects). Assign the BMI value to a property called bmi (lowercase), and also return it from the method.
+
+    Log to the console who has the higher BMI, together with the full name and the respective BMI. Example: "John Smith's BMI (28.3) is higher than Mark Miller's (23.9)!".
+
+TEST DATA: Marks weighs 78 kg and is 1.69 m tall. John weighs 92 kg and is 1.95 m tall.*/
+
+//Solution 1
+// const mark = {
+//   fullName: 'Mark Miller',
+//   mass: 78,
+//   height: 1.89,
+//   calcBMI: function(){
+//     const bmi = this.mass / (this.height * this.height);
+//     return bmi
+//   },
+// };
+
+// const john = {
+//   fullName: 'John Smith',
+//   mass: 92,
+//   height: 1.95,
+//   calcBMI: function(){
+//     const bmi =  this.mass / (this.height * this.height);
+//     return bmi
+//   },
+// };
+
+// const compBMI = (mark.calcBMI() > john.calcBMI()) ? `${mark.fullName}'s BMI (${john.calcBMI()}) is higher thank ${john.fullName}'s (${john.calcBMI()})` : `${john.fullName}'s BMI (${john.calcBMI()}) is higher thank ${mark.fullName}'s (${mark.calcBMI()})`;
+// console.log(john.calcBMI());
+// console.log(mark.calcBMI());
+// console.log(compBMI);
+
+// if (mark.calcBMI()>john.calcBMI()) {
+//   console.log(`${mark.fullName}'s BMI (${mark.calcBMI()}) is higher than ${john.fullName}'s (${john.calcBMI()})`)
+  
+// } else {
+//   console.log(`${john.fullName}'s BMI (${john.calcBMI()}) is higher thank ${mark.fullName}'s (${mark.calcBMI()})`)
+   
+// };
+
+/*
+//Solution 2
+const mark = {
+  fullName: 'Mark Miller',
+  mass: 78,
+  height: 1.89,
+  calcBMI: function(){
+    this.bmi = this.mass / (this.height **2); 
+    return  this.bmi; 
+  },
+};
+
+const john = {
+  
+  fullName: 'John Smith',
+  mass: 92,
+  height: 1.95,
+  calcBMI: function(){
+    this.bmi = this.mass / (this.height **2); 
+    return  this.bmi; 
+  },
+};
+
+
+const compBMI = (mark.bmi > john.bmi) ? `${mark.fullName}'s BMI (${john.calcBMI()} is higher than ${john.fullName}'s (${john.bmi})` : `${john.fullName}'s BMI (${john.bmi}) is higher thank ${mark.fullName}'s (${mark.bmi})`;
+john.calcBMI();
+mark.calcBMI();
+console.log(john.bmi);
+console.log(compBMI);
+
+//Loops (for loop )
+for (let index = 0; index <= 10 ; index++) {
+  console.log(`Lifting weight repitition ${index}`);
+  
+
+
+// Looping arrays, breaking and continue
+
+const dayoArray = [
+  'Dayo',
+  'Adesokan',
+  3002 - 1988,
+  'Developer',
+  ['Malik', 'Abass', 'Tobi']
+];
+const types = [];
+
+for (let index = 0; index < dayoArray.length; index++) {
+  console.log(dayoArray[index], typeof dayoArray[index]);
+  types.push(typeof dayoArray[index])
+  
+};
+
+console.log(types);
+
+const years =[1991, 2007, 1969, 2020];
+const thisYear = new Date().getFullYear();
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  const elementAge = thisYear - years[i];
+  ages.push(elementAge);
+  
+};
+console.log(ages);
+// Break and continue
+console.log(`------ONLY STRINGS--------`)
+for (let index = 0; index < dayoArray.length; index++) {
+  if(typeof dayoArray[index] !== 'string') continue;
+  console.log(dayoArray[index], typeof dayoArray[index])
+};
+
+console.log(`------BREAK WITH NUMBER--------`)
+for (let index = 0; index < dayoArray.length; index++) {
+  if(typeof dayoArray[index] === 'number') break;
+  console.log(dayoArray[index], typeof dayoArray[index])
+};
+
+console.log(`------LOOPING BACKWARD--------`)
+for (let i = dayoArray.length - 1; i >= 0 ; i--) {
+  // if(typeof dayoArray[i] === 'number') break;
+  console.log(dayoArray[i], typeof dayoArray[i])
+};
+}
+console.log(`------LOOPING INSIDE LOOP--------`)
+for (let exercise = 1; exercise < 4 ; exercise++) {
+  console.log(`------Starting exercise ${exercise}`)
+
+  for (let rep = 1; rep < 6; rep++) {
+    console.log(`Lifting weight repetition ${rep}🏋️`)
+    
+  }
+};
 */
+// console.log(`------WHILE LOOP--------`)
+// for (let exercise = 1; exercise < 10 ; exercise++) {
+//   console.log(`------Starting exercise ${exercise}`)
+
+// };
+
+// let rep = 1;
+// while (rep <= 10) {
+//   console.log(`WHILE: Lifting weight repetition ${rep} 🏋️`)
+//   rep++;
+// };
+
+// let dice = Math.trunc(Math.random() * 6) + 1;
+// //console.log(dice);
+
+// while (dice != 6) {
+//   console.log(`You rolled a ${dice}`);
+//   dice = Math.trunc(Math.random() * 6) + 1;
+//   (dice === 6) ? console.log(`Okolo 🏆🏆🏆🎲🎲`) : console.log(`Try again ...`)
+// }
+
+
+// CHALLENGE #4
+
+// Let's improve Steven's tip calculator even more, this time using loops!
+
+// Your tasks:
+
+//     Create an array called bills containing all 10 test bill values.
+
+//     Create empty arrays for the tips and the totals (tips and totals)
+
+//     Use the calcTip function we wrote before (included in the starter code) to calculate tips and total values (bill + tip) for every bill value in the bills array. Use a for loop to perform the 10 calculations!
+
+
+// TEST DATA: 22, 295, 176, 440, 37, 105, 10, 1100, 86, and 52.
+
+
+// BONUS:
+
+// Write a function calcAverage which takes an array called arr as an argument. This function calculates the average of all numbers in the given array. This is a DIFFICULT challenge (we haven't done this before)! Here is how to solve it if you feel like it:
+
+//     First, you will need to add up all values in the array. To do the addition, start by creating a variable sum that starts at 0. Then loop over the array using a for loop. In each iteration, add the current value to the sum variable. This way, by the end of the loop, you have all values added together.
+
+//     To calculate the average, divide the sum you calculated before by the length of the array (because that's the number of elements).
+
+//     Call the function with the totals array.
+
+const calcTip = function (bill) {
+  // let tip;
+  // let total;
+  // for (let i = 0; i < bills.length; i++) {
+  //   tip = (bills[i] >= 50 && bills[i] <= 300) ? bills[i] * 0.15 : bills[i] * 0.2;
+  //   total = tip + bills[i];
+  //   tips.push(tip);
+  //   totals.push(total);
+  //   console.log(`${tip}, ${total}`);
+  // }
+  
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+}
+const bills = [44, 22, 555, 125, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+// calcTip();
+
+for (let i = 0; i < bills.length; i++) {
+  const tip = calcTip(bills[i]);
+  tips.push(tip);
+  totals.push(tip + bills[i]);
+}
+console.log(bills, tips, totals);
+
+const calcAverage = function (arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    // sum = sum + arr[i];
+    sum += arr[i];
+  }
+  return sum / arr.length;
+}
+console.log(calcAverage([2, 3, 7]));
+console.log(calcAverage(totals));
+console.log(calcAverage(tips));
